@@ -9,4 +9,7 @@ class User < ApplicationRecord
 
   has_many :comments, foreign_key: 'commenter_id', dependent: :destroy
 
+  has_many :posts_i_commented_on, through: :comments, source: :commentable, source_type: :Post
+  has_many :articles_i_commented_on, through: :comments, source: :commentable, source_type: :Article
+
 end
